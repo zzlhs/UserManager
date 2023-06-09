@@ -1,0 +1,34 @@
+spring.application.name=freedomLogin
+spring.profiles.active=dev
+
+########################## nacos config ##########################
+# 1??????????????????????????????????????????????????????????????
+# ?????????????????extension-configs[3] > extension-configs[2] > extension-configs[1] > extension-configs[0?
+# ?????????????????shared-configs[3] > shared-configs[2] > shared-configs[1] > shared-configs[0]?
+# 2?????????????????????? > ????(extension-configs) > ????(shared-configs)
+spring.cloud.nacos.config.server-addr=http://192.168.8.37:8849
+spring.cloud.nacos.discovery.server-addr=http://192.168.8.37:8849
+spring.cloud.nacos.config.file-extension=yaml
+spring.cloud.nacos.config.namespace=public
+spring.cloud.nacos.config.group=DEFAULT_GROUP
+
+spring.cloud.nacos.config.extension-configs[0].data-id=dosm-launcher-default.properties
+spring.cloud.nacos.config.extension-configs[0].group=dosm
+spring.cloud.nacos.config.extension-configs[0].refresh=true
+spring.cloud.nacos.config.extension-configs[1].data-id=dosm-launcher.properties
+spring.cloud.nacos.config.extension-configs[1].group=dosm
+spring.cloud.nacos.config.extension-configs[1].refresh=true
+#spring.cloud.nacos.config.extension-configs[2].data-id=dosm-launcher-dev.properties
+#spring.cloud.nacos.config.extension-configs[2].group=dosm
+#spring.cloud.nacos.config.extension-configs[2].refresh=true
+
+spring.cloud.nacos.config.username=nacos
+spring.cloud.nacos.config.password=nacos
+#spring.cloud.nacos.config.context-path=/nacos
+
+
+# ??????
+spring.cloud.nacos.discovery.enabled=false
+
+#logging.config=classpath:log4j2-test.xml
+

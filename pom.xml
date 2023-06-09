@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>freedom.login</groupId>
+    <artifactId>freedom-login</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <springboot.version>2.3.3.RELEASE</springboot.version>
+        <mybatis.version>3.5.7</mybatis.version>
+        <baomidou-mybatis-generator.version>3.5.0</baomidou-mybatis-generator.version>
+        <baomidou-mybatis.version>3.4.3</baomidou-mybatis.version>
+        <baomidou-dynamic-datasource.version>3.4.1</baomidou-dynamic-datasource.version>
+        <velocity.version>2.3</velocity.version>
+        <mybatis-starter.version>2.2.3</mybatis-starter.version>
+        <lombok.version>1.18.12</lombok.version>
+        <commons.lang.version>3.9</commons.lang.version>
+        <commons.io.version>2.6</commons.io.version>
+        <activiti.version>7.1.0.M6</activiti.version>
+        <spring.boot.starter.security.version>2.3.4.RELEASE</spring.boot.starter.security.version>
+        <!--        <mysql.version>5.1.40</mysql.version>-->
+        <mysql.version>8.0.11</mysql.version>
+        <druid.version>1.1.10</druid.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+        <dubbo.version>2.7.15</dubbo.version>
+
+        <!--        Hoxton.SR5   Hoxton.BUILD-SNAPSHOT-->
+        <spring-cloud-gateway-varsion>Hoxton.SR5</spring-cloud-gateway-varsion>
+        <rocketmq.spring.boot.starter.version>2.2.0</rocketmq.spring.boot.starter.version>
+
+        <testng.version>7.5</testng.version>
+        <reportng.version>1.2.2</reportng.version>
+        <velocity.version>1.4</velocity.version>
+
+        <swagger2.version>2.9.2</swagger2.version>
+        <aliyun.oss.version>3.10.2</aliyun.oss.version>
+        <minio.version>8.2.2</minio.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <hutool.version>5.7.21</hutool.version>
+        <mail.version>1.6.2</mail.version>
+        <jjwt.version>0.11.2</jjwt.version>
+        <xxljob.version>2.3.0</xxljob.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+        <!-- 引入log4j2依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+<!--         Sa-Token 权限认证，在线文档：https://sa-token.cc -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot-starter</artifactId>
+            <version>1.34.0</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${baomidou-mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-core</artifactId>
+            <version>${baomidou-mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
