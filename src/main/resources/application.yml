@@ -8,6 +8,11 @@ spring:
     password: 123456sc
     username: root
     url: jdbc:mysql://192.168.8.37:3306/freedom?characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      max-request-size: 215MB
 
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token:
@@ -30,4 +35,6 @@ mybatis:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   mapper-locations: classpath:mybatis/*DAO.xml,classpath:com/free/**/dao/*Dao.xml,classpath:com/free/**/dao/*Mapper.xml
+
+blog-file-path:  /Users/zhengyuan/Movies
 
