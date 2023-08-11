@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.free.core.utils.UUIDUtils;
 import freedom.login.dao.BlogEntityDao;
 import freedom.login.entity.BlogEntity;
+import freedom.login.entity.BlogRouterEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.FileCopyUtils;
@@ -15,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +34,70 @@ public class BlogController {
     @Resource
     private BlogEntityDao blogEntityDao;
 
+    /**
+     *
+     * {
+     *     "subPath": "/",
+     *     "title": "markdown-website",
+     *     "topicWidth": 250,
+     *     "openLevel": 1,
+     *     "topics": [
+     *     {
+     *       "id": "01",
+     *       "name": "markdown-website是什么？",
+     *       "src": "static/what.md"
+     *     },
+     *     {
+     *         "id": "02",
+     *         "name": "开始使用",
+     *         "submenus": [
+     *         {
+     *             "id": "0201",
+     *             "name": "搭建markdown网站",
+     *             "src": "static/how.md"
+     *         },
+     *         {
+     *             "id": "0102",
+     *             "name": "更多网站属性配置",
+     *             "src": "static/edit.md"
+     *         },
+     *         {
+     *             "id": "0203",
+     *             "name": "如何部署发布",
+     *             "src": "static/deploy.md"
+     *         },
+     *                {
+     * 			"id": "0204",
+     * 			"name": "链接跳转指定文档",
+     * 			"src": "static/link.md"
+     *        }
+     *       ]
+     *     }
+     *   ]
+     * }
+     */
+    @GetMapping("/mdRoute")
+    public List<BlogRouterEntity> mdRoute(){
+        List<BlogEntity> result = blogEntityDao.selectList(new LambdaQueryWrapper<BlogEntity>().eq(BlogEntity::getIsDel, 0)
+                .orderByDesc(BlogEntity::getCreatedTime));
+
+        List<BlogRouterEntity> resList = new ArrayList<>();
+
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+
+        result.stream().forEach(item -> {
+            BlogRouterEntity blogRouterEntity = new BlogRouterEntity();
+            blogRouterEntity.setId(item.getId());
+            blogRouterEntity.setName(item.getName()+"_" + ft.format(item.getCreatedTime()));
+            blogRouterEntity.setSrc(item.getMdFilePath());
+            resList.add(blogRouterEntity);
+        });
+        return resList;
+    }
+
+    public static void main(String[] args) {
+    }
+
 
     @GetMapping("/list")
     public List<BlogEntity> getBlogList(){
@@ -42,8 +109,6 @@ public class BlogController {
     @GetMapping("/{id}")
     public BlogEntity getById(@PathVariable String id){
         if(StringUtils.isEmpty(id)){
-//            Integer.MAX_VALUE;
-
             BlogEntity blogEntity = new BlogEntity();
             blogEntity.setName("测试数据你都找出来啦");
             return blogEntity;
